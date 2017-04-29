@@ -1,11 +1,9 @@
 # SoftEther VPN server
 
 FROM debian:8
-MAINTAINER Frank Rosquin <frank.rosquin@gmail.com>
+MAINTAINER Guilherme Barile <gui@bravado.com.br>
 
-#ENV VERSION v4.18-9570-rtm-2015.07.26
-#ENV VERSION v4.19-9599-beta-2015.10.19
-ENV VERSION v4.21-9613-beta-2016.04.24
+ENV VERSION v4.22-9634-beta-2016.11.27
 WORKDIR /usr/local/vpnserver
 
 
@@ -19,9 +17,11 @@ RUN apt-get update &&\
         make i_read_and_agree_the_license_agreement &&\
         apt-get purge -y -q --auto-remove gcc make wget
 
-ADD runner.sh /usr/local/vpnserver/runner.sh
-RUN chmod 755 /usr/local/vpnserver/runner.sh
+ADD docker-entrypoint.sh /
+RUN chmod 755 /docker-entrypoint.sh
+
+VOLUME /var/log/vpnserver
 
 EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp 500/udp 4500/udp
 
-ENTRYPOINT ["/usr/local/vpnserver/runner.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
