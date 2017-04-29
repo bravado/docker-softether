@@ -25,3 +25,5 @@ VOLUME /var/log/vpnserver
 EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp 500/udp 4500/udp
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD server
