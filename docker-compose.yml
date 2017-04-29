@@ -1,0 +1,15 @@
+version: '2'
+services:
+  softether:
+    cap_add:
+    - NET_ADMIN
+    image: bravado/softether
+    stdin_open: true
+    tty: true
+    ports:
+    - 1194:1194/udp
+    - 5555:5555/tcp
+    - 443:443/tcp
+    - 992:992/tcp
+    - 500:500/udp
+    - 4500:4500/udp
