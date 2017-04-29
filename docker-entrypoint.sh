@@ -3,13 +3,13 @@
 
 case $1 in
   server)
-    [ ! -d "/var/log/vpnserver/security_log" ] && mkdir -p /var/log/vpnserver/security_log
-    
-    [ ! -d "/var/log/vpnserver/packet_log" ] && mkdir -p /var/log/vpnserver/packet_log
-    
-    [ ! -d "/var/log/vpnserver/server_log" ] && mkdir -p /var/log/vpnserver/server_log
 
-    ln -s /var/log/vpnserver/*_log /usr/local/vpnserver/
+    ln -s /vpnserver/vpn_server.config /usr/local/vpnserver
+
+    for i in security packet server; do
+      [ ! -d "/vpnserver/${i}_log" ] && mkdir -p "/vpnserver/${i}_log"
+      ln -s /var/log/vpnserver/${i}_log /usr/local/vpnserver/
+    done
 
     exec /usr/local/vpnserver/vpnserver execsvc
     ;;

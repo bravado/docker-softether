@@ -6,6 +6,8 @@ services:
     image: bravado/softether
     stdin_open: true
     tty: true
+    volumes:
+    - vpnserver:/vpnserver
     ports:
     - 1194:1194/udp
     - 5555:5555/tcp
@@ -13,3 +15,6 @@ services:
     - 992:992/tcp
     - 500:500/udp
     - 4500:4500/udp
+volumes:
+  vpnserver:
+    driver: local

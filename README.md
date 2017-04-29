@@ -15,15 +15,10 @@ Simplest version:
 
     docker run -d --net host --cap-add NET_ADMIN --name softether bravado/softether
 
-With external config file:
+To keep configuration and logs in a data container:
 
-    touch /etc/vpnserver/vpn_server.config
-    docker run -d -v /etc/vpnserver/vpn_server.config:/usr/local/vpnserver/vpn_server.config --net host --cap-add NET_ADMIN --name softether bravado/softether
-
-If you want to keep the logs in a data container:
-
-    docker volume create --name softether-logs
-    docker run -d --net host --cap-add NET_ADMIN --name softether -v softether-logs:/var/log/vpnserver bravado/softether
+    docker volume create --name softether
+    docker run -d --net host --cap-add NET_ADMIN --name softether -v softether:/var/log/vpnserver bravado/softether
 
 Using docker-compose:
 
