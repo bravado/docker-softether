@@ -13,7 +13,7 @@ RUN cd /usr/local/vpnserver && make i_read_and_agree_the_license_agreement
 FROM debian:8
 
 RUN apt-get update &&\
-	apt-get -y --no-install-recommends -q install iptables tunctl &&\
+	apt-get -y --no-install-recommends -q install iptables uml-utilities &&\
 	apt-get clean && \
 	rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 

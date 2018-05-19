@@ -13,12 +13,12 @@ Available on [Docker Hub](https://hub.docker.com/r/bravado/softether/).
 
 Simplest version:
 
-    docker run -d --net host --cap-add NET_ADMIN --name softether bravado/softether
+    docker run -d --net host --cap-add NET_ADMIN --device /dev/net/tun --name softether bravado/softether
 
 To keep configuration and logs in a data container:
 
     docker volume create --name softether
-    docker run -d --net host --cap-add NET_ADMIN --name softether -v softether:/vpnserver bravado/softether
+    docker run -d --net host --cap-add NET_ADMIN --device /dev/net/tun --name softether -v softether:/vpnserver bravado/softether
 
 Using docker-compose:
 
