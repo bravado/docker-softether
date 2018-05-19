@@ -18,7 +18,7 @@ Simplest version:
 To keep configuration and logs in a data container:
 
     docker volume create --name softether
-    docker run -d --net host --cap-add NET_ADMIN --name softether -v softether:/var/log/vpnserver bravado/softether
+    docker run -d --net host --cap-add NET_ADMIN --name softether -v softether:/vpnserver bravado/softether
 
 Using docker-compose:
 
