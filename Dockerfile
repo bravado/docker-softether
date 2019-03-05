@@ -1,6 +1,6 @@
 FROM debian:8 AS builder
 
-ENV VERSION v4.25-9656-rtm-2018.01.15
+ENV VERSION v4.29-9680-rtm-2019.02.28
 
 RUN apt-get update &&\
 	apt-get -y -q install iptables gcc make curl
